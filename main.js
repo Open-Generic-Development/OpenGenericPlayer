@@ -7,6 +7,7 @@ function createWindow(){
         height: 600
     })
 
+    win.setIcon("img/ogp-chan.png")
     win.loadFile("index.html").then()
 }
 

@@ -19,5 +19,8 @@
   "homepage": "https://github.com/Open-Generic-Development/OpenGenericPlayer#readme",
   "devDependencies": {
     "electron": "^13.1.6"
+  },
+  "dependencies": {
+    "ytdl-core": "^4.8.3"
   }
 }

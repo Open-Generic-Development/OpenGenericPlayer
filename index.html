@@ -1,10 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <title>OpenGenericPlayer</title>
+    <link rel="stylesheet" href="web-assets/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="web-assets/css/render.css"/>
+    <link rel="stylesheet" href="web-assets/icons/bootstrap-icons.css"/>
 </head>
 <body>
-<p>Welcome!</p>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">OpenGenericPlayer</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02"
+                aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor02">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#"><i class="bi bi-house-door"></i> Home
+                        <span class="visually-hidden">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                       aria-haspopup="true" aria-expanded="false"><i class="bi bi-list"></i> Playlists</a>
+                    <div class="dropdown-menu dropdown-menu-dark">
+                        <a class="dropdown-item" href="#"><i class="bi bi-heart"></i> Favorite Songs</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#"><i class="bi bi-plus"></i> New Playlist</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="bi bi-compass"></i> Explore</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="bi bi-box"></i> Import</a>
+                </li>
+            </ul>
+            <form class="d-flex">
+                <!--suppress HtmlFormInputWithoutLabel -->
+                <input class="form-control me-sm-2 bg-dark border-secondary searchbar" type="text"
+                       placeholder="Type to search">
+            </form>
+        </div>
+    </div>
+</nav>
+<div id="home"></div>
+<div id="player">
+    <img id="song-icon" class="song" src="img/ogp-chan.png" alt="Song Image">
+    <div class="song-meta-part container h-100 w-125">
+        <div class="song-metadata">
+            <span id="song-title">How To OpenGenericPlayer</span><br/>
+            <span id="song-interpret">OGP-chan</span>
+        </div>
+    </div>
+</div>
+
+<script type="application/javascript" src="web-assets/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
