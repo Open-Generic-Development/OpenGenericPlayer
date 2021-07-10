@@ -54,11 +54,47 @@
     <div class="song-meta-part container h-100 w-125">
         <div class="song-metadata">
             <span id="song-title">How To OpenGenericPlayer</span><br/>
-            <span id="song-interpret">OGP-chan</span>
+            <span id="song-interpret">OGP-chan</span><br />
+            <span id="song-source">Local</span>
+        </div>
+    </div>
+    <div class="song-meta-part h-100 w-100">
+        <div id="song-contols" class="w-100">
+            <div class="contol-buttons text-center w-100">
+                <br />
+                <table>
+                    <tr>
+                        <td class="table-data"></td>
+                        <td class="table-data"><div id="back" class="bi bi-skip-backward-fill"></div></td>
+                        <td class="table-data"><div id="pause_resume" class="bi bi-pause-fill"></div></td>
+                        <td class="table-data"><div id="effects" class="bi bi-stars"></div></td>
+                        <td class="table-data"><div id="next" class="bi bi-skip-forward-fill"></div></td>
+                        <td class="table-data"></td>
+                    </tr>
+                </table>
+                <br />
+                <br />
+                <table>
+                    <tr>
+                        <td class="table-data">
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="70"
+                                     aria-valuemin="0" aria-valuemax="100" style="width:70%">
+                                    <span class="sr-only"></span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </div>
 </div>
 
 <script type="application/javascript" src="web-assets/js/bootstrap.bundle.min.js"></script>
+<script type="application/javascript">
+    const {print} = require('./utils.js')
+    print("Please do not paste anything here. That would be a security threat")
+</script>
 </body>
 </html>

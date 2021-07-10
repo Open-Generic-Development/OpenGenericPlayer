@@ -54,3 +54,12 @@ span {
 .w-125 {
     width: 12.5% !important;
 }
+
+.table-data {
+    padding: 15px;
+}
+
+.contol-buttons table {
+    position: absolute;
+    left: 45%;
+}
