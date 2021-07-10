@@ -1,0 +1,23 @@
+{
+  "name": "opengenericplayer",
+  "version": "1.0.0",
+  "description": "An open source cross-platform music player",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Open-Generic-Development/OpenGenericPlayer.git"
+  },
+  "author": "OpenGenericDevelopment (Christian B. / Florian S.)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Open-Generic-Development/OpenGenericPlayer/issues"
+  },
+  "homepage": "https://github.com/Open-Generic-Development/OpenGenericPlayer#readme",
+  "devDependencies": {
+    "electron": "^13.1.6"
+  }
+}
