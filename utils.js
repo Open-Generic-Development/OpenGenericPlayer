@@ -2,4 +2,10 @@ function print(msg){
     console.log(msg)
 }
 
-module.exports = {print}
+function delay(milisec) {
+    return new Promise(resolve => {
+        setTimeout(() => { resolve('') }, milisec);
+    })
+}
+
+module.exports = {print, delay}

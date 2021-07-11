@@ -8,7 +8,7 @@
     "start": "electron ."
   },
   "repository": {
-    "type": "git",
+    "type": "gilamet",
     "url": "git+https://github.com/Open-Generic-Development/OpenGenericPlayer.git"
   },
   "author": "OpenGenericDevelopment (Christian B. / Florian S.)",
@@ -17,11 +17,11 @@
     "url": "https://github.com/Open-Generic-Development/OpenGenericPlayer/issues"
   },
   "homepage": "https://github.com/Open-Generic-Development/OpenGenericPlayer#readme",
-  "devDependencies": {
-    "electron": "^13.1.6"
-  },
   "dependencies": {
+    "electron": "^13.1.6",
     "electron-reload": "^1.5.0",
+    "howler": "^2.2.3",
+    "speaker": "^0.5.3",
     "ytdl-core": "^4.8.3"
   }
 }
