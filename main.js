@@ -12,6 +12,7 @@ function createWindow() {
     })
 
     win.setIcon("img/ogp-chan.png")
+    win.setMinimumSize(600, 300)
     win.loadFile("index.html").then()
 }
 
