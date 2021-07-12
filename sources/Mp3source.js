@@ -28,6 +28,10 @@ class Audio {
     play(){
         this.win.webContents.send("src_lib_ap_howler", {type: "play"})
     }
+
+    search(percentage) {
+        this.win.webContents.send("src_lib_ap_howler", {type: "search", percentage: percentage})
+    }
 }
 
 class Mp3source {
@@ -87,7 +91,7 @@ class Mp3source {
     }
 
     search(seconds){
-        this.audio.currentTime = seconds
+        this.audio.search(seconds)
     }
 
 }

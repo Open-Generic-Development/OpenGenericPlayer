@@ -1,5 +1,12 @@
 const {ipcRenderer} = require('electron');
 
+
+function formatTime (secs) {
+    let minutes = Math.floor(secs / 60) || 0;
+    let seconds = (secs - minutes * 60) || 0;
+    return minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
+}
+
 ipcRenderer.on("msg", ((event, arg) => console.log(arg)))
 
 ipcRenderer.on("song", ((event, arg) => {
@@ -21,13 +28,13 @@ ipcRenderer.on("song", ((event, arg) => {
     document.getElementById("song-title").innerText = song_name
     document.getElementById("song-interpret").innerText = song_interpret
     document.getElementById("song-source").innerText = song_source
-    document.getElementById("song-seconds-now").innerText = song_bar_now
+    document.getElementById("song-seconds-now").innerText = formatTime(song_bar_now) === "0:00" ? "--:--": formatTime(song_bar_now)
     document.getElementById("song-seek-bar").value = song_bar_percent
-    document.getElementById("song-seconds-max").innerText = song_bar_max
+    document.getElementById("song-seconds-max").innerText = formatTime(song_bar_max) === "0:00" ? "--:--": formatTime(song_bar_max)
 }))
 
 function onSeek(){
-    ipcRenderer.send("search", document.getElementById("song-seek-bar").value)
+    ipcRenderer.send("search", document.getElementById("song-seek-bar").value/100)
 }
 
 function prev(){
@@ -40,4 +47,10 @@ function next(){
 
 function playpause(){
     ipcRenderer.send("action", "pp")
+}
+
+function sendSongBar(now, max, perc){
+    document.getElementById("song-seconds-now").innerText = now
+    document.getElementById("song-seek-bar").value = perc*100
+    document.getElementById("song-seconds-max").innerText = max
 }

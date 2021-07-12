@@ -38,17 +38,16 @@ const AudioPlayer = class {
 
     next(){
         // TODO
-        this.update.song(this.songSource.song_info)
+        // this.update.song(this.songSource.song_info)
     }
 
     prev(){
         // TODO
-        this.update.song(this.songSource.song_info)
+        // this.update.song(this.songSource.song_info)
     }
 
-    search(seconds){
-        this.songSource.search(seconds)
-        this.update.search(seconds)
+    search(percentage){
+        this.songSource.search(percentage)
     }
 };
 
