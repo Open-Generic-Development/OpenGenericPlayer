@@ -33,24 +33,80 @@ ipcRenderer.on("song", ((event, arg) => {
     document.getElementById("song-seconds-max").innerText = formatTime(song_bar_max) === "0:00" ? "--:--": formatTime(song_bar_max)
 }))
 
-function onSeek(){
-    ipcRenderer.send("search", document.getElementById("song-seek-bar").value/100)
-}
-
-function prev(){
-    ipcRenderer.send("action", "prev")
-}
-
-function next(){
-    ipcRenderer.send("action", "next")
-}
-
-function playpause(){
-    ipcRenderer.send("action", "pp")
-}
-
 function sendSongBar(now, max, perc){
     document.getElementById("song-seconds-now").innerText = now
     document.getElementById("song-seek-bar").value = perc*100
     document.getElementById("song-seconds-max").innerText = max
 }
+
+
+// Audio
+const howler = require("howler")
+
+
+function delay(milisec) {
+    return new Promise(resolve => {
+        setTimeout(() => { resolve('') }, milisec);
+    })
+}
+
+let sound;
+
+// Howler Api
+
+let last = ""
+
+function step(){
+    let currentTime = formatTime(Math.round(sound.seek() || 0))
+    let currentTimeRaw = sound.seek() || 0
+    let duration = formatTime(Math.round(sound.duration()))
+    let durationRaw = sound.duration()
+
+    if(last !== currentTime) {
+        console.log("Seconds Now: " + currentTime + " | Seconds Max: " + duration + " | " + ((currentTimeRaw * 100) / durationRaw) + "%")
+        last = currentTime
+    }
+
+    sendSongBar(currentTime, duration, ((currentTimeRaw*100)/durationRaw))
+
+    if (sound.playing()) {
+        requestAnimationFrame(step.bind(this));
+    }
+}
+
+ipcRenderer.on("src_lib_ap_howler", (event, args) => {
+    switch (args.type) {
+        case "new":
+            sound = new howler.Howl({
+                src: args.src,
+                onplay: function () {
+                    requestAnimationFrame(step.bind(this))
+                }
+            })
+            break
+        case "play":
+            sound.play()
+            break
+        case "pause":
+            sound.pause()
+            break
+        case "search":
+            sound.pause()
+            console.error(args.percentage)
+            sound.seek(args.percentage/100*sound.duration())
+            sound.play()
+            break
+    }
+})
+
+async function reloader(){
+    // noinspection InfiniteLoopJS
+    while (true){
+        const playingrn = sound.playing()
+        console.warn(playingrn)
+        await delay(10)
+    }
+}
+
+reloader().then()
+

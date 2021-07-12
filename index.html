@@ -85,10 +85,10 @@
                 <table>
                     <tr>
                         <td class="table-data"></td>
-                        <td class="table-data"><div onclick="prev()" id="back" class="bi bi-skip-backward-fill"></div></td>
-                        <td class="table-data"><div onclick="playpause()" id="pause_resume" class="bi bi-play-fill"></div></td>
+                        <td class="table-data"><div onclick="ipcRenderer.send('action', 'prev')" id="back" class="bi bi-skip-backward-fill"></div></td>
+                        <td class="table-data"><div onclick="ipcRenderer.send('action', 'pp')" id="pause_resume" class="bi bi-play-fill"></div></td>
                         <td class="table-data"><div onclick="" id="effects" class="bi bi-stars"></div></td>
-                        <td class="table-data"><div onclick="next()" id="next" class="bi bi-skip-forward-fill"></div></td>
+                        <td class="table-data"><div onclick="ipcRenderer.send('action', 'next')" id="next" class="bi bi-skip-forward-fill"></div></td>
                         <td class="table-data"></td>
                     </tr>
                 </table>
@@ -102,7 +102,7 @@
                             </td>
                             <td class="table-data" style="text-align: center; min-width: 150px; width: 750px; padding: 12px 0 15px;">
                                 <!--suppress HtmlFormInputWithoutLabel -->
-                                <input type="range" min="0" max="10000" value="0" style="width: 100%" onchange="onSeek()" id="song-seek-bar" />
+                                <input type="range" min="0" max="10000" value="0" style="width: 100%" onchange="ipcRenderer.send('search', document.getElementById('song-seek-bar').value/100)" id="song-seek-bar" />
                             </td>
                             <td class="table-data" style="width: 50px; padding-left: 5px; padding-top: 0">
                                 <span id="song-seconds-max" style="font-size: 10px!important;">--:--</span>
@@ -116,6 +116,5 @@
 </div>
 
 <script type="application/javascript" src="web-assets/js/bootstrap.bundle.min.js"></script>
-<script type="application/javascript" src="web-assets/js/audio.js"></script>
 </body>
 </html>
