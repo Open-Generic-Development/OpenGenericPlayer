@@ -50,7 +50,25 @@
         </div>
     </div>
 </nav>
-<div id="home"></div>
+<div id="home">
+    <div id="recent-songs">
+        <h1>Recently Listened</h1>
+        <div id="recent-songs-wrapper">
+            <div class="recent-song shadow">
+                <img class="song-thumbnail shadow" src="img/ogp-chan.png" alt="song thumbnail">
+                <span class="song-name">How To OpenGenericPlayer</span>
+            </div>
+            <div class="recent-song shadow">
+                <img class="song-thumbnail shadow" src="img/ogp-chan.png" alt="song thumbnail">
+                <span class="song-name">How To OpenGenericPlayer</span>
+            </div>
+            <div class="recent-song shadow">
+                <img class="song-thumbnail shadow" src="img/ogp-chan.png" alt="song thumbnail">
+                <span class="song-name">How To OpenGenericPlayer</span>
+            </div>
+        </div>
+    </div>
+</div>
 <div id="player">
     <img id="song-icon" class="song" src="img/ogp-chan.png" alt="Song Image">
     <div class="song-meta-part container h-100 w-125">
@@ -79,14 +97,14 @@
                 <div style="display: flex; position: relative; left: 10%; right: 10%; height: 30px; width: 50%; align-self: center;">
                     <table style="width: 100%; height: 100%; left: 0; top: 0;">
                         <tr style="margin-left: auto!important; margin-right: auto!important;">
-                            <td class="table-data" style="width: 50px; padding-right: 5px;">
+                            <td class="table-data" style="width: 50px; padding-right: 5px; padding-top: 0">
                                 <span id="song-seconds-now" style="font-size: 10px!important;">--:--</span>
                             </td>
-                            <td class="table-data" style="padding: 15px 0; text-align: center; min-width: 150px; width: 750px;">
+                            <td class="table-data" style="text-align: center; min-width: 150px; width: 750px; padding: 12px 0 15px;">
                                 <!--suppress HtmlFormInputWithoutLabel -->
                                 <input type="range" min="0" max="10000" value="0" style="width: 100%" onchange="onSeek()" id="song-seek-bar" />
                             </td>
-                            <td class="table-data" style="width: 50px; padding-left: 5px">
+                            <td class="table-data" style="width: 50px; padding-left: 5px; padding-top: 0">
                                 <span id="song-seconds-max" style="font-size: 10px!important;">--:--</span>
                             </td>
                         </tr>
