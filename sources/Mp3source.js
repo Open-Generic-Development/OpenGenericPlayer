@@ -52,7 +52,6 @@ class Mp3source {
         this.currentSong = 1
         this.song_info = this.playlist[this.currentSong]
 
-        let audio;
         this.reload()
     }
 
