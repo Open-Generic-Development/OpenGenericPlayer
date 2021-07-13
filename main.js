@@ -56,7 +56,8 @@ try {
             electron: require(`electron`)
         }
     );
-}catch (e){}
+} catch (e) {
+}
 
 app.whenReady().then(() => {
     createWindow()

@@ -1,7 +1,7 @@
 const {ipcRenderer} = require('electron');
 
 
-function formatTime (secs) {
+function formatTime(secs) {
     let minutes = Math.floor(secs / 60) || 0;
     let seconds = (secs - minutes * 60) || 0;
     return minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
@@ -21,21 +21,21 @@ ipcRenderer.on("song", ((event, arg) => {
 
     if (song_bar_max > 100) {
         song_bar_percent = (song_bar_now / song_bar_max * 100)
-    }else
+    } else
         song_bar_percent = 0;
 
     document.getElementById("song-icon").src = song_image
     document.getElementById("song-title").innerText = song_name
     document.getElementById("song-interpret").innerText = song_interpret
     document.getElementById("song-source").innerText = song_source
-    document.getElementById("song-seconds-now").innerText = formatTime(song_bar_now) === "0:00" ? "--:--": formatTime(song_bar_now)
+    document.getElementById("song-seconds-now").innerText = formatTime(song_bar_now) === "0:00" ? "--:--" : formatTime(song_bar_now)
     document.getElementById("song-seek-bar").value = song_bar_percent
-    document.getElementById("song-seconds-max").innerText = formatTime(song_bar_max) === "0:00" ? "--:--": formatTime(song_bar_max)
+    document.getElementById("song-seconds-max").innerText = formatTime(song_bar_max) === "0:00" ? "--:--" : formatTime(song_bar_max)
 }))
 
-function sendSongBar(now, max, perc){
+function sendSongBar(now, max, perc) {
     document.getElementById("song-seconds-now").innerText = now
-    document.getElementById("song-seek-bar").value = perc*100
+    document.getElementById("song-seek-bar").value = perc * 100
     document.getElementById("song-seconds-max").innerText = max
 }
 
@@ -46,7 +46,9 @@ const howler = require("howler")
 
 function delay(milisec) {
     return new Promise(resolve => {
-        setTimeout(() => { resolve('') }, milisec);
+        setTimeout(() => {
+            resolve('')
+        }, milisec);
     })
 }
 
@@ -56,18 +58,18 @@ let sound;
 
 let last = ""
 
-function step(){
+function step() {
     let currentTime = formatTime(Math.round(sound.seek() || 0))
     let currentTimeRaw = sound.seek() || 0
     let duration = formatTime(Math.round(sound.duration()))
     let durationRaw = sound.duration()
 
-    if(last !== currentTime) {
+    if (last !== currentTime) {
         console.log("Seconds Now: " + currentTime + " | Seconds Max: " + duration + " | " + ((currentTimeRaw * 100) / durationRaw) + "%")
         last = currentTime
     }
 
-    sendSongBar(currentTime, duration, ((currentTimeRaw*100)/durationRaw))
+    sendSongBar(currentTime, duration, ((currentTimeRaw * 100) / durationRaw))
 
     if (sound.playing()) {
         requestAnimationFrame(step.bind(this));
@@ -93,20 +95,20 @@ ipcRenderer.on("src_lib_ap_howler", (event, args) => {
         case "search":
             sound.pause()
             console.error(args.percentage)
-            sound.seek(args.percentage/100*sound.duration())
+            sound.seek(args.percentage / 100 * sound.duration())
             sound.play()
             break
     }
 })
 
-async function reloader(){
+async function reloader() {
     // noinspection InfiniteLoopJS
-    while (true){
-        const loaded = (Boolean)( sound || false)
+    while (true) {
+        const loaded = (Boolean)(sound || false)
 
         try {
             document.getElementById('song-seek-bar').disabled = !loaded
-        }catch (e) {
+        } catch (e) {
             // Whatever happens it cannot renderupdate at this point, so just continue
         }
 
