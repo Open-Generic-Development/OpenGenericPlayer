@@ -1,5 +1,5 @@
 const {app, BrowserWindow, ipcMain} = require('electron');
-const audioplayer = require('./AudioPlayer.js')
+const audioplayer = require(__dirname + '/AudioPlayer.js')
 
 let win;
 
@@ -13,12 +13,12 @@ function createWindow() {
         }
     })
 
-    win.setIcon("img/ogp-chan.png")
+    win.setIcon(__dirname + "/img/ogp-chan.png")
     win.setMinimumSize(600, 300)
     win.loadFile("index.html").then(() => {
         win.webContents.send("msg", "Welcome to osu!")
         win.webContents.send("song", {
-            image: "img/ogp-chan.png",
+            image: __dirname + "/img/ogp-chan.png",
             name: "No Song",
             interpret: "",
             source: "",
@@ -48,13 +48,15 @@ ipcMain.on("action", (event, args) => {
     }
 })
 
+try {
 // Enable live reload for all the files inside our project directory
-require('electron-reload')(
-    __dirname,
-    {
-        electron: require(`${__dirname}/node_modules/electron`)
-    }
-);
+    require('electron-reload')(
+        __dirname,
+        {
+            electron: require(`electron`)
+        }
+    );
+}catch (e){}
 
 app.whenReady().then(() => {
     createWindow()

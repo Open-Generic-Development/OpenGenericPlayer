@@ -4,8 +4,11 @@
   "description": "An open source cross-platform music player",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron ."
+    "build-win": "electron-builder -w",
+    "build-mac": "electron-builder -m",
+    "build-lin": "electron-builder -l",
+    "start": "electron .",
+    "test": "echo 'Error: No tests at the moment'"
   },
   "repository": {
     "type": "gilamet",
@@ -18,10 +21,13 @@
   },
   "homepage": "https://github.com/Open-Generic-Development/OpenGenericPlayer#readme",
   "dependencies": {
-    "electron": "^13.1.6",
-    "electron-reload": "^1.5.0",
     "howler": "^2.2.3",
     "speaker": "^0.5.3",
     "ytdl-core": "^4.8.3"
+  },
+  "devDependencies": {
+    "electron-reload": "^1.5.0",
+    "electron-builder": "^22.11.7",
+    "electron": "^13.1.6"
   }
 }

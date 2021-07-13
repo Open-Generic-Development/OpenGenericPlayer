@@ -102,8 +102,14 @@ ipcRenderer.on("src_lib_ap_howler", (event, args) => {
 async function reloader(){
     // noinspection InfiniteLoopJS
     while (true){
-        const playingrn = sound.playing()
-        console.warn(playingrn)
+        const loaded = (Boolean)( sound || false)
+
+        try {
+            document.getElementById('song-seek-bar').disabled = !loaded
+        }catch (e) {
+            // Whatever happens it cannot renderupdate at this point, so just continue
+        }
+
         await delay(10)
     }
 }
