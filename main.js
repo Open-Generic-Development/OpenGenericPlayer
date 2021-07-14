@@ -57,6 +57,7 @@ try {
         }
     );
 } catch (e) {
+    // Obv not in Dev Env
 }
 
 app.whenReady().then(() => {
