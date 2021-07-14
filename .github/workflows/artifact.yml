@@ -52,9 +52,9 @@ jobs:
       - name: Build for windows
         run: npm run build-win
       - name: Remove build files Nr. 1
-        run: deltree /S /Q dist/*-unpacked
+        run: Remove-Item -Recurse -Force dist/*-unpacked
       - name: Remove build files Nr. 2
-        run: del /Q dist/*.yml
+        run: Remove-Item -Force dist/*.yml
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v2.2.4
         with:
