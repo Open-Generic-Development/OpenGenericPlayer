@@ -19,6 +19,43 @@
   "bugs": {
     "url": "https://github.com/Open-Generic-Development/OpenGenericPlayer/issues"
   },
+  "build": {
+    "appId": "systems.ogd.opengenericplayer",
+    "mac": {
+      "category": "public.app-category.music",
+      "target": [
+        {
+          "target": "dmg"
+        },
+        {
+          "target": "pkg"
+        },
+        {
+          "target": "zip"
+        }
+      ],
+      "icon": "img/icons/mac/icon.icns"
+    },
+    "win": {
+      "icon": "img/icons/win/icon.ico",
+      "target": [
+        {
+          "target": "nsis"
+        },
+        {
+          "target": "portable"
+        },
+        {
+          "target": "zip"
+        }
+      ]
+    },
+    "linux": {
+      "icon": "img/icons/lin/512x512.png",
+      "target": "AppImage",
+      "category": "Audio"
+    }
+  },
   "homepage": "https://github.com/Open-Generic-Development/OpenGenericPlayer#readme",
   "dependencies": {
     "howler": "^2.2.3",
